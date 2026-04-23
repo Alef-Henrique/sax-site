@@ -34,7 +34,7 @@ export default function Footer(){
 
      <h3>Empresa</h3>
 
-     <p>CNPJ: 00.000.000/0001-00</p>
+     <p>CNPJ:66.352.293.0001-84</p>
 
      <p>Política de privacidade</p>
 
@@ -46,11 +46,11 @@ export default function Footer(){
 
      <h3>Redes sociais</h3>
 
-     <p>Instagram</p>
+     <p><a href="https://www.instagram.com/alefesilvasax/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
 
-     <p>YouTube</p>
+     <p><a href="https://www.youtube.com/@alefesilvasax" target="_blank" rel="noopener noreferrer">YouTube</a></p>
 
-     <p>TikTok</p>
+     <p><a href="https://www.tiktok.com/@alefe_sax" target="_blank" rel="noopener noreferrer">TikTok</a></p>
 
     </div>
 

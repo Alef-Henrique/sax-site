@@ -24,7 +24,7 @@ export default function Hero(){
 
     <h1>
 
-     Música elegante para momentos inesquecíveis
+     Transforme seu evento em uma experiência inesquecível
 
     </h1>
 
@@ -39,7 +39,7 @@ export default function Hero(){
 
      <Link to="/contato" className="btn">
 
-      Solicitar orçamento
+      Ver disponibilidade
 
      </Link>
 

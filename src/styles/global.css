@@ -1,3 +1,4 @@
+
 *{
  margin:0;
  padding:0;
@@ -315,16 +316,11 @@ a{
 
 }
 
-.events-grid{
-
- display:grid;
-
- grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-
- gap:25px;
-
+.events-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
-
 
 .card{
 

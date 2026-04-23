@@ -1,105 +1,183 @@
 import { useEffect } from "react"
-import SectionTitle from "../components/SectionTitle"
-import EventCard from "../components/EventCard"
-import TestimonialCard from "../components/TestimonialCard"
-import { motion } from "framer-motion"
+import "../styles/casamentos.css"
+
+// CASAMENTOS (6 imagens)
+import w1 from "../assets/event-weddings.jpg"
+import w2 from "../assets/event-weddings2.jpg"
+import w3 from "../assets/event-weddings8.jpeg"
+import w4 from "../assets/event-weddings10.jpg"
+import w5 from "../assets/event-weddings11.jpg"
+import w6 from "../assets/event-weddings12.jpg"
+
+// RESTAURANTES (3 imagens)
+import r1 from "../assets/event-weddings.jpg"
+import r2 from "../assets/event-weddings.jpg"
+import r3 from "../assets/event-weddings.jpg"
+
+// ANIVERSÁRIOS (3 imagens)
+import b1 from "../assets/event-weddings.jpg"
+import b2 from "../assets/event-weddings.jpg"
+import b3 from "../assets/event-weddings.jpg"
+
+// CORPORATIVOS (3 imagens)
+import c1 from "../assets/event-weddings.jpg"
+import c2 from "../assets/event-weddings.jpg"
+import c3 from "../assets/event-weddings.jpg"
 
 export default function Events(){
 
- // SCROLL AUTOMÁTICO
- useEffect(() => {
+  const weddingImages = [
+    { src: w1, text: "Casamento na praia" },
+    { src: w2, text: "Cerimônia elegante" },
+    { src: w3, text: "Momento especial" },
+    { src: w4, text: "Entrada da noiva" },
+    { src: w5, text: "Recepção sofisticada" },
+    { src: w6, text: "Noite inesquecível" }
+  ]
 
-  const hash = window.location.hash
+const restaurantImages = [
+  { src: "https://source.unsplash.com/400x300/?restaurant", text: "Ambiente sofisticado" },
+  { src: "https://source.unsplash.com/400x300/?dinner", text: "Clima elegante" },
+  { src: "https://source.unsplash.com/400x300/?food", text: "Experiência única" }
+]
 
-  if(hash){
-   const element = document.querySelector(hash)
+  const birthdayImages = [
+  { src: "https://source.unsplash.com/400x300/?restaurant", text: "Ambiente sofisticado" },
+  { src: "https://source.unsplash.com/400x300/?dinner", text: "Clima elegante" },
+  { src: "https://source.unsplash.com/400x300/?food", text: "Experiência única" }
+  ]
 
-   if(element){
-    element.scrollIntoView({ behavior: "smooth" })
-   }
-  }
+  const corporateImages = [
+  { src: "https://source.unsplash.com/400x300/?restaurant", text: "Ambiente sofisticado" },
+  { src: "https://source.unsplash.com/400x300/?dinner", text: "Clima elegante" },
+  { src: "https://source.unsplash.com/400x300/?food", text: "Experiência única" }
+  ]
 
- }, [])
+  useEffect(() => {
+    const hash = window.location.hash
+    if(hash){
+      const element = document.querySelector(hash)
+      if(element){
+        element.scrollIntoView({ behavior: "smooth" })
+      }
+    }
+  }, [])
 
- return(
+  return (
+    <section className="container">
 
-  <section className="container">
+      {/* CASAMENTOS */}
+      <div id="casamentos" className="casamentos-container">
+        <div className="header-section">
+          <h2>Casamentos 💍</h2>
+          <p>Música ao vivo que transforma momentos em memórias inesquecíveis.</p>
+        </div>
 
-   <SectionTitle title="Eventos"/>
+        <div className="event-grid">
+          {weddingImages.map((item, index) => (
+            <div className="image-card" key={index}>
+              <img src={item.src} alt="" />
+              <div className="overlay">
+                <span>{item.text}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-   {/* GRID RESUMO (SE QUISER MANTER) */}
+      {/* RESTAURANTES */}
+      <div id="restaurantes" className="casamentos-container">
+        <div className="header-section">
+          <h2>Restaurantes 🍽️</h2>
+          <p>Ambiente elegante com música ao vivo.</p>
+        </div>
 
-   <motion.div
-    className="grid"
-    initial={{ opacity: 0, y: 40 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ duration: .6 }}
-   >
+        <div className="event-grid">
+          {restaurantImages.map((item, index) => (
+            <div className="image-card" key={index}>
+              <img src={item.src} alt="" />
+              <div className="overlay">
+                <span>{item.text}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-    <EventCard title="Casamentos"/>
-    <EventCard title="Restaurantes"/>
-    <EventCard title="Aniversários"/>
-    <EventCard title="Corporativos"/>
+      {/* ANIVERSÁRIOS */}
+      <div id="aniversarios" className="casamentos-container">
+        <div className="header-section">
+          <h2>Aniversários 🎉</h2>
+          <p>Momentos especiais com trilha sonora única.</p>
+        </div>
 
-   </motion.div>
+        <div className="event-grid">
+          {birthdayImages.map((item, index) => (
+            <div className="image-card" key={index}>
+              <img src={item.src} alt="" />
+              <div className="overlay">
+                <span>{item.text}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-   {/* SEÇÕES DETALHADAS */}
+      {/* CORPORATIVOS */}
+      <div id="corporativos" className="casamentos-container">
+        <div className="header-section">
+          <h2>Corporativos 🏢</h2>
+          <p>Eventos sofisticados e profissionais.</p>
+        </div>
 
-   <div id="casamentos" style={{ marginTop: "80px" }}>
-    <SectionTitle title="Casamentos" />
-    <p>Entrada da noiva, cerimônia e recepção com música emocionante.</p>
-   </div>
+        <div className="event-grid">
+          {corporateImages.map((item, index) => (
+            <div className="image-card" key={index}>
+              <img src={item.src} alt="" />
+              <div className="overlay">
+                <span>{item.text}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-   <div id="corporativos" style={{ marginTop: "80px" }}>
-    <SectionTitle title="Corporativos" />
-    <p>Eventos empresariais sofisticados com ambiente elegante.</p>
-   </div>
+      <div id="corporativos" className="casamentos-container">
+        <div className="header-section">
+          <h2>Festas gerais 🎉</h2>
+          <p>Eventos sofisticados e profissionais.</p>
+        </div>
 
-   <div id="restaurantes" style={{ marginTop: "80px" }}>
-    <SectionTitle title="Restaurantes" />
-    <p>Música ambiente para criar uma experiência única aos clientes.</p>
-   </div>
+        <div className="event-grid">
+          {corporateImages.map((item, index) => (
+            <div className="image-card" key={index}>
+              <img src={item.src} alt="" />
+              <div className="overlay">
+                <span>{item.text}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-   <div id="aniversarios" style={{ marginTop: "80px" }}>
-    <SectionTitle title="Aniversários" />
-    <p>Momentos especiais com trilha sonora personalizada.</p>
-   </div>
+            <div id="corporativos" className="casamentos-container">
+        <div className="header-section">
+          <h2>Shows e Eventos 🎤</h2>
+          <p>Eventos sofisticados e profissionais.</p>
+        </div>
 
-   <div id="festas" style={{ marginTop: "80px" }}>
-    <SectionTitle title="Festas" />
-    <p>Animação e energia para festas inesquecíveis.</p>
-   </div>
+        <div className="event-grid">
+          {corporateImages.map((item, index) => (
+            <div className="image-card" key={index}>
+              <img src={item.src} alt="" />
+              <div className="overlay">
+                <span>{item.text}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
 
-   <div id="shows" style={{ marginTop: "80px" }}>
-    <SectionTitle title="Shows e Eventos" />
-    <p>Apresentações ao vivo com presença e estilo profissional.</p>
-   </div>
-
-   {/* DEPOIMENTOS */}
-
-   <SectionTitle title="Depoimentos"/>
-
-   <motion.div
-    className="grid"
-    initial={{ opacity: 0 }}
-    whileInView={{ opacity: 1 }}
-    transition={{ duration: .6 }}
-   >
-
-    <TestimonialCard
-     name="Cliente"
-     text="Excelente apresentação!"
-    />
-
-    <TestimonialCard
-     name="Empresa"
-     text="Evento elegante."
-    />
-
-   </motion.div>
-
-  </section>
-
- )
-
+    </section>
+  )
 }
