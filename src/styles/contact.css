@@ -1,0 +1,52 @@
+.contact-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 120px 20px 60px;
+  text-align: center;
+}
+
+.contact-content {
+  max-width: 600px;
+}
+
+.contact-content h1 {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.contact-subtitle {
+  color: #d4af37;
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+.contact-description {
+  color: #ccc;
+  margin-bottom: 20px;
+  line-height: 1.6;
+}
+
+.contact-info p {
+  margin: 5px 0;
+  color: #aaa;
+}
+
+/* BOTÃO PREMIUM */
+.btn-contact {
+  display: inline-block;
+  margin-top: 25px;
+  background: linear-gradient(45deg, #d4af37, #f5d76e);
+  color: black;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.btn-contact:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+}

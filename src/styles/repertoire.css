@@ -1,0 +1,57 @@
+.repertorio-container {
+  min-height: 100vh; /* ocupa a tela toda */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* centraliza vertical */
+  align-items: center; /* centraliza horizontal */
+  text-align: center;
+  padding: 120px 20px 60px; /* espaço topo + respiro embaixo */
+}
+
+/* TÍTULO */
+.repertorio-title {
+  font-size: 2.5rem;
+  cursor: pointer;
+  margin: 15px 0;
+  position: relative;
+  display: inline-block;
+  transition: 0.3s;
+}
+
+/* LINHA ANIMADA EMBAIXO */
+.repertorio-title::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: #d4af37;
+  transition: 0.4s ease;
+  transform: translateX(-50%);
+}
+
+/* HOVER */
+.repertorio-title:hover {
+  color: #d4af37;
+  transform: scale(1.05);
+}
+
+.repertorio-title:hover::after {
+  width: 100%;
+}
+
+/* ATIVO (CLICADO) */
+.repertorio-title.active {
+  color: #d4af37;
+}
+
+.repertorio-title.active::after {
+  width: 100%;
+}
+.repertorio-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}

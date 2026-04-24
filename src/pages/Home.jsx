@@ -3,6 +3,7 @@ import EventCard from "../components/EventCard"
 import TestimonialCard from "../components/TestimonialCard"
 import RepertorioCard from "../components/RepertorioCard"
 
+
 import { GiDiamondRing } from "react-icons/gi"
 import { FaBriefcase, FaBirthdayCake, FaGlassCheers, FaMusic } from "react-icons/fa"
 import { MdRestaurant } from "react-icons/md"
