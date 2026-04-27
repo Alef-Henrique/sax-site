@@ -11,20 +11,30 @@ import w4 from "../assets/event-weddings10.jpg"
 import w5 from "../assets/event-weddings11.jpg"
 import w6 from "../assets/event-weddings12.jpg"
 
-// RESTAURANTES (3 imagens)
-import r1 from "../assets/event-weddings.jpg"
-import r2 from "../assets/event-weddings.jpg"
-import r3 from "../assets/event-weddings.jpg"
+// RESTAURANTES (3 imagens)"../assets/event-restaurant3.jpg"
+import r1 from "../assets/event-restaurant1.jpg"
+import r2 from "../assets/event-romantic3.jpg"
+import r3 from "../assets/event-romantic2.jpg"
 
 // ANIVERSÁRIOS (3 imagens)
-import b1 from "../assets/event-weddings.jpg"
-import b2 from "../assets/event-weddings.jpg"
-import b3 from "../assets/event-weddings.jpg"
+import b1 from "../assets/event-niver.jpg"
+import b2 from "../assets/event-niver3.jpg"
+import b3 from "../assets/event-niver2.jpg"
 
 // CORPORATIVOS (3 imagens)
-import c1 from "../assets/event-weddings.jpg"
-import c2 from "../assets/event-weddings.jpg"
-import c3 from "../assets/event-weddings.jpg"
+import c1 from "../assets/event-corporation3.webp"
+import c2 from "../assets/event-corporation2.jpg"
+import c3 from "../assets/event-corporation4.webp"
+
+// FESTAS (3 imagens)
+import f1 from "../assets/event-festas2.jpg"
+import f2 from "../assets/event-festas.jpg"
+import f3 from "../assets/event-festas3.webp"
+
+// SHOWS E EVENTOS (3 imagens)
+import s1 from "../assets/event-events.jpeg"
+import s2 from "../assets/event-romantic4.jpg"
+import s3 from "../assets/event-romantic2.jpg"
 
 export default function Events(){
 
@@ -38,35 +48,33 @@ export default function Events(){
   ]
 
 const restaurantImages = [
-  { src: "https://source.unsplash.com/400x300/?restaurant", text: "Ambiente sofisticado" },
-  { src: "https://source.unsplash.com/400x300/?dinner", text: "Clima elegante" },
-  { src: "https://source.unsplash.com/400x300/?food", text: "Experiência única" }
+    { src: r1, text: "Sabor + Som ambiente" },
+    { src: r2, text: "Ambiente elegante" },
+    { src: r3, text: "Música envolvente" },
 ]
 
   const birthdayImages = [
-  { src: "https://source.unsplash.com/400x300/?restaurant", text: "Ambiente sofisticado" },
-  { src: "https://source.unsplash.com/400x300/?dinner", text: "Clima elegante" },
-  { src: "https://source.unsplash.com/400x300/?food", text: "Experiência única" }
+    { src: b1, text: "Casamento na praia" },
+    { src: b2, text: "Cerimônia elegante" },
+    { src: b3, text: "Momento especial" },
   ]
 
   const corporateImages = [
-  { src: "https://source.unsplash.com/400x300/?restaurant", text: "Ambiente sofisticado" },
-  { src: "https://source.unsplash.com/400x300/?dinner", text: "Clima elegante" },
-  { src: "https://source.unsplash.com/400x300/?food", text: "Experiência única" }
+    { src: c1, text: "Casamento na praia" },
+    { src: c2, text: "Cerimônia elegante" },
+    { src: c3, text: "Momento especial" },
   ]
   
   const partyImages = [
-    { src:"https://source.unsplash.com/400x300/?restaurant", text: "Festa especial" },
-    { src:"https://source.unsplash.com/400x300/?party", text: "Evento animado" },
-    { src:"https://source.unsplash.com/400x300/?celebration", text: "Celebração única" }
+    { src: f1, text: "Casamento na praia" },
+    { src: f2, text: "Cerimônia elegante" },
+    { src: f3, text: "Momento especial" },
   ]
 
-
-
   const showsImages = [
-  { src: "https://source.unsplash.com/400x300/?restaurant", text: "Ambiente sofisticado" },
-  { src: "https://source.unsplash.com/400x300/?dinner", text: "Clima elegante" },
-  { src: "https://source.unsplash.com/400x300/?food", text: "Experiência única" }
+    { src: s1, text: "Casamento na praia" },
+    { src: s2, text: "Cerimônia elegante" },
+    { src: s3, text: "Momento especial" },
   ]
 
   useEffect(() => {
