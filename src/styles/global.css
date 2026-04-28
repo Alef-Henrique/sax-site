@@ -677,6 +677,9 @@ a{
   font-size: 14px;
   margin: 6px 0;
 }
+.copyright {
+  text-align: center;
+}
 
 /* RESPONSIVO */
 @media (max-width: 768px) {
