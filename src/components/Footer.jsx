@@ -27,7 +27,7 @@ export default function Footer(){
 
           <p>CNPJ:66.352.293.0001-84</p>
           <p>Política de privacidade</p>
-          <p>Endereço: sua cidade</p>
+          <p>Endereço: Avenida Maceió 1021, Tabuleiro dos Martins - Alagoas</p>
         </div>
 
         <div>
