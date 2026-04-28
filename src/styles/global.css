@@ -687,19 +687,20 @@ a{
     grid-template-columns: 1fr;
     text-align: center;
   }
+  .copyright{
+
+  margin-top:40px;
+  text-align: center;
+  opacity:.5;
+
+}
+
 
   .footer a:hover {
     transform: none;
   }
 }
 
-.copyright{
-
- margin-top:40px;
-
- opacity:.5;
-
-}
 
 /* WHATSAPP */
 
