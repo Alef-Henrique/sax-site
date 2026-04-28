@@ -70,15 +70,15 @@ export default function Home(){
             <TestimonialCard name="Restaurante Bella Vista" role="Restaurante" text="Ambiente perfeito com música ao vivo. Fez toda a diferença!" />
             <TestimonialCard name="Fernanda Lima" role="Cliente" text="Profissional talentoso e muito atencioso. Recomendo!" />
 
-            <TestimonialCard name="Mariana & Lucas" role="Casamento" text="Nosso casamento ficou ainda mais especial com esse som incrível!" />
+            <TestimonialCard name="Ozeias & Paula" role="Casamento" text="Nosso casamento ficou ainda mais especial com esse som incrível!" />
             <TestimonialCard name="Roberto Almeida" role="Cliente" text="Repertório impecável e muito bom gosto. Todos amaram!" />
-            <TestimonialCard name="Ana Paula Sousa" role="Cliente" text="Música de altíssima qualidade e com muita sensibilidade!" />
+            <TestimonialCard name="Naiane & Max" role="Cliente" text="Música de altíssima qualidade e com muita sensibilidade!" />
             <TestimonialCard name="Eventos Prime" role="Empresa" text="Transformou nosso evento corporativo em algo memorável." />
 
-            <TestimonialCard name="Ricardo Farias" role="Cliente" text="Pontual, profissional e um talento fora do comum!" />
-            <TestimonialCard name="Bistrô Gourmet" role="Restaurante" text="Criou a atmosfera perfeita para nosso jantar." />
+            <TestimonialCard name="Churrascaria de Arraial" role="Cliente" text="Pontual, profissional e um talento fora do comum!" />
+            <TestimonialCard name="Chefe do Crepe" role="Restaurante" text="Criou a atmosfera perfeita para nosso jantar." />
             <TestimonialCard name="Patrícia Gomes" role="Cliente" text="Superou todas as expectativas. Emocionou a todos!" />
-            <TestimonialCard name="Igreja Presbiteriana" role="Instituição" text="Excelente músico! Técnica e carisma impressionantes." />
+            <TestimonialCard name="Metodista contagiante" role="Igreja" text="Excelente músico! Técnica e carisma impressionantes." />
 
             </div>
 

@@ -39,42 +39,42 @@ import s3 from "../assets/event-romantic2.jpg"
 export default function Events(){
 
   const weddingImages = [
-    { src: w1, text: "Casamento na praia" },
-    { src: w2, text: "Cerimônia elegante" },
-    { src: w3, text: "Momento especial" },
-    { src: w4, text: "Entrada da noiva" },
-    { src: w5, text: "Recepção sofisticada" },
-    { src: w6, text: "Noite inesquecível" }
+    { src: w1, text: "Momentos únicos embalados por emoção e elegância"},
+    { src: w2, text: "Trilha sonora perfeita para o dia mais especial" },
+    { src: w3, text: "Cada nota marcando um amor inesquecível" },
+    { src: w4, text: "Uma melodia que eterniza cada instante do seu amor" },
+    { src: w5, text: "A música certa para um momento que será lembrado para sempre" },
+    { src: w6, text: "Sons que transformam sentimentos em memórias inesquecíveis" }
   ]
 
 const restaurantImages = [
-    { src: r1, text: "Sabor + Som ambiente" },
-    { src: r2, text: "Ambiente elegante" },
-    { src: r3, text: "Música envolvente" },
+    { src: r1, text: "Atmosfera envolvente com música ao vivo" },
+    { src: r2, text: "Seu jantar com um toque de sofisticação" },
+    { src: r3, text: "Experiência sensorial além do paladar" },
 ]
 
   const birthdayImages = [
-    { src: b1, text: "Casamento na praia" },
-    { src: b2, text: "Cerimônia elegante" },
-    { src: b3, text: "Momento especial" },
+    { src: b1, text: "Celebre a vida com música e emoção" },
+    { src: b2, text: "Momentos felizes que ficam na memória" },
+    { src: b3, text: "Cada aniversário merece uma trilha especial" },
   ]
 
   const corporateImages = [
-    { src: c1, text: "Casamento na praia" },
-    { src: c2, text: "Cerimônia elegante" },
-    { src: c3, text: "Momento especial" },
+    { src: c1, text: "Ambiente sofisticado para eventos profissionais" },
+    { src: c2, text: "Elegância sonora que valoriza sua marca" },
+    { src: c3, text: "Experiência musical alinhada ao seu evento" },
   ]
   
   const partyImages = [
-    { src: f1, text: "Casamento na praia" },
-    { src: f2, text: "Cerimônia elegante" },
-    { src: f3, text: "Momento especial" },
+    { src: f1, text: "Energia e animação para sua celebração" },
+    { src: f2, text: "Música que conecta e contagia" },
+    { src: f3, text: "A trilha sonora perfeita para sua festa" },
   ]
 
   const showsImages = [
-    { src: s1, text: "Casamento na praia" },
-    { src: s2, text: "Cerimônia elegante" },
-    { src: s3, text: "Momento especial" },
+    { src: s1, text: "Performances marcantes que encantam o público" },
+    { src: s2, text: "Presença musical que transforma o ambiente" },
+    { src: s3, text: "Experiência ao vivo com identidade e emoção" },
   ]
 
   useEffect(() => {

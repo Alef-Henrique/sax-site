@@ -2,68 +2,62 @@ import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
 
 export default function Footer(){
+  return(
+    <motion.footer
+      className="footer"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}   // ✅ corrigido
+      transition={{ duration: 0.8 }}
+    >
+      <div className="footer-grid">
 
- return(
+        <div>
+          <h3>Menu</h3>
 
-  <motion.footer
+          <Link to="/">Home</Link>
+          <Link to="/about">Sobre</Link>
+          <Link to="/events">Eventos</Link>
+          <Link to="/repertorio">Repertório</Link>
+          <Link to="/contact">Contato</Link>
 
-   className="footer"
+        </div>
 
-   initial={{ opacity: 0 }}
-   whileInView={{ opacity: 1 }}
+        <div>
+          <h3>Empresa</h3>
 
-   transition={{ duration: .8 }}
+          <p>CNPJ:66.352.293.0001-84</p>
+          <p>Política de privacidade</p>
+          <p>Endereço: sua cidade</p>
+        </div>
 
-  >
+        <div>
+          <h3>Redes sociais</h3>
 
-   <div className="footer-grid">
+          <p>
+            <a href="https://www.instagram.com/alefesilvasax/" target="_blank" rel="noopener noreferrer">
+              Instagram
+            </a>
+          </p>
 
-    <div>
+          <p>
+            <a href="https://www.youtube.com/@alefemarosax7" target="_blank" rel="noopener noreferrer">
+              YouTube
+            </a>
+          </p>
 
-     <h3>Menu</h3>
+          <p>
+            <a href="https://www.tiktok.com/@alefe_sax" target="_blank" rel="noopener noreferrer">
+              TikTok
+            </a>
+          </p>
+        </div>
 
-     <Link to="/">Home</Link>
-     <Link to="/sobre">Sobre</Link>
-     <Link to="/eventos">Eventos</Link>
-     <Link to="/repertorio">Repertório</Link>
-     <Link to="/contato">Contato</Link>
+      </div>
 
-    </div>
+      <p className="copyright">
+        © 2026 Alefe Sax
+      </p>
 
-    <div>
-
-     <h3>Empresa</h3>
-
-     <p>CNPJ:66.352.293.0001-84</p>
-
-     <p>Política de privacidade</p>
-
-     <p>Endereço: sua cidade</p>
-
-    </div>
-
-    <div>
-
-     <h3>Redes sociais</h3>
-
-     <p><a href="https://www.instagram.com/alefesilvasax/" target="_blank" rel="noopener noreferrer">Instagram</a></p>
-
-     <p><a href="https://www.youtube.com/@alefesilvasax" target="_blank" rel="noopener noreferrer">YouTube</a></p>
-
-     <p><a href="https://www.tiktok.com/@alefe_sax" target="_blank" rel="noopener noreferrer">TikTok</a></p>
-
-    </div>
-
-   </div>
-
-   <p className="copyright">
-
-    © 2026 Alefe Sax
-
-   </p>
-
-  </motion.footer>
-
- )
-
+    </motion.footer>
+  )
 }

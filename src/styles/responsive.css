@@ -31,11 +31,12 @@
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 658px) {
 
   .events-grid,
   .repertorio-grid,
-  .testimonial-grid {
+  .testimonial-grid,
+  .card {
     grid-template-columns: 1fr !important;
     gap: 15px;
   }
@@ -49,17 +50,17 @@
   }
 
   .gallery-card img {
-    height: 180px;
+    height: 250px;
   }
 
 }
 
 @media (max-width: 500px) {
 
-  .gallery-item img {
-    height: auto;
-    object-fit: contain;
-  }
+.gallery-item img {
+  width: 250px;
+  border-radius: 12px;
+}
 
 }
 
@@ -75,6 +76,21 @@
 
   .section-title {
     font-size: 20px;
+  }
+
+}
+
+
+@media (max-width: 768px) {
+
+  .event-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .image-card img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
   }
 
 }

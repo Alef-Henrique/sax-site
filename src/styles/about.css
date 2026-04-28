@@ -30,6 +30,8 @@
 
 .about-text ul {
   margin: 20px 0;
+  list-style: none;
+  padding-left: 0; 
 }
 
 .about-text li {
