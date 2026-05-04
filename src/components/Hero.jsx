@@ -37,13 +37,13 @@ export default function Hero(){
 
     <div className="hero-buttons">
 
-     <Link to="/contato" className="btn">
+     <Link to="contact" className="btn">
 
       Ver disponibilidade
 
      </Link>
 
-     <Link to="/sobre" className="btn-outline">
+     <Link to="about" className="btn-outline">
 
       Sobre mim
 
