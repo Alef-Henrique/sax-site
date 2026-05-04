@@ -53,6 +53,66 @@ export default function Home(){
 
             </section>
     </Reveal>
+
+    <Reveal>
+            <section class="videos">
+            <h2>Minhas Apresentações</h2>
+
+            <div class="videos-grid">
+                
+                <div class="video-card">
+                <iframe 
+                    src="https://www.youtube.com/embed/zlHAj3qXsr0" 
+                    title="Sax performance"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+                </div>
+
+                <div class="video-card">
+                <iframe 
+                    src="https://www.youtube.com/embed/rDMVwgI3Foc"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+                </div>
+
+                <div class="video-card">
+                <iframe 
+                    src="https://www.youtube.com/embed/BaWzWqKXBrM" 
+                    title="Sax performance"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+                </div>
+                                <div class="video-card">
+                <iframe 
+                    src="https://www.youtube.com/embed/Z-8GVXz2454" 
+                    title="Sax performance"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+                </div>
+                <div class="video-card">
+                <iframe 
+                    src="https://www.youtube.com/embed/XcbO9tJBZSk" 
+                    title="Sax performance"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+                </div>
+                <div class="video-card">
+                <iframe 
+                    src="https://www.youtube.com/embed/NO02I3XXbTU" 
+                    title="Sax performance"
+                    frameborder="0"
+                    allowfullscreen>
+                </iframe>
+                </div>
+
+            </div>
+            </section>
+    </Reveal>
         
 
         {/* DEPOIMENTOS */}
