@@ -40,6 +40,21 @@ a{
   align-items: center;
   padding: 15px 40px;
 }
+.logo {
+  color: #fff;
+  font-size: 26px;
+  font-weight: bold;
+  cursor: pointer;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+/* HOVER */
+.logo:hover {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.8);
+  transform: scale(1.05);
+  color: #d4af37;
+}
 
 /* MENU DESKTOP */
 .nav-desktop {

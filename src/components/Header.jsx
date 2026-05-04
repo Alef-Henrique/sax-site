@@ -1,13 +1,28 @@
 import { Link } from "react-router-dom"
 import { useState } from "react"
+import { useNavigate } from "react-router-dom"
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate()
 
   return (
     <>
       <header className="header">
-        <h1>Álefe | Saxofonista</h1>
+
+        <h1
+          className="logo"
+          onClick={() => {
+            navigate("/") // vai pra home
+            window.scrollTo({
+              top: 0,
+              behavior: "smooth",
+            })
+          }}
+        >
+          Álefe | Saxofonista
+        </h1>
+
 
         {/* MENU DESKTOP */}
         <nav className="nav-desktop">
