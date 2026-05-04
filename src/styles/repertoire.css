@@ -1,57 +1,53 @@
+/* FUNDO GERAL */
+body {
+  background: black;
+}
+
+/* CONTAINER GRID */
 .repertorio-container {
-  min-height: 100vh; /* ocupa a tela toda */
-  display: flex;
-  flex-direction: column;
-  justify-content: center; /* centraliza vertical */
-  align-items: center; /* centraliza horizontal */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* já diminui aqui também */
+  gap: 25px;
+  padding: 40px;
+  margin-top: 80px; /* 👈 distância do header */
+}
+
+/* CARD */
+.repertorio-item {
+  background: black;
+  padding: 12px; /* 👈 menor */
+  border-radius: 18px;
+  border: 1px solid #d4af37;
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+  transition: all 0.3s ease;
   text-align: center;
-  padding: 120px 20px 60px; /* espaço topo + respiro embaixo */
+}
+
+/* HOVER (efeito luxo) */
+.repertorio-item:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
 }
 
 /* TÍTULO */
 .repertorio-title {
-  font-size: 2.5rem;
-  cursor: pointer;
-  margin: 15px 0;
-  position: relative;
-  display: inline-block;
-  transition: 0.3s;
-}
-
-/* LINHA ANIMADA EMBAIXO */
-.repertorio-title::after {
-  content: "";
-  position: absolute;
-  left: 50%;
-  bottom: -5px;
-  width: 0%;
-  height: 2px;
-  background: #d4af37;
-  transition: 0.4s ease;
-  transform: translateX(-50%);
-}
-
-/* HOVER */
-.repertorio-title:hover {
+  font-size: 26px;
+  font-weight: bold;
   color: #d4af37;
-  transform: scale(1.05);
+  margin-bottom: 15px;
+  letter-spacing: 1px;
 }
 
-.repertorio-title:hover::after {
-  width: 100%;
-}
-
-/* ATIVO (CLICADO) */
-.repertorio-title.active {
-  color: #d4af37;
-}
-
-.repertorio-title.active::after {
-  width: 100%;
-}
+/* LISTA */
 .repertorio-list {
   list-style: none;
   padding: 0;
   margin: 0;
-  text-align: center;
+}
+
+/* ITENS */
+.repertorio-list li {
+  color: #e5e5e5;
+  font-size: 14px;
+  margin-bottom: 8px;
 }

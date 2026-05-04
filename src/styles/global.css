@@ -45,8 +45,40 @@ a{
 }
 
 .nav-desktop a {
-  color: #fff;
+  position: relative;
   text-decoration: none;
+  color: #d4af37;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+.nav-desktop a:hover {
+  transform: translateY(-3px);
+  text-shadow: 0 0 8px rgba(212, 175, 55, 0.7);
+}
+.nav-desktop a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: #d4af37;
+  transition: width 0.3s ease;
+}
+/* ANIMAÇÃO DA LINHA */
+.nav-desktop a:hover::after {
+  width: 100%;
+}
+
+/* LINK ATIVO (opcional) */
+.nav-desktop a.active {
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.9);
+}
+
+.nav-desktop a.active::after {
+  width: 100%;
 }
 
 /* BOTÃO HAMBÚRGUER */
@@ -108,7 +140,7 @@ a{
 }
 
 .side-menu a {
-  color: white;
+  color: #d4af37;
   text-decoration: none;
 }
 

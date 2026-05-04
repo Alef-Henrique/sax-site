@@ -104,7 +104,7 @@ export default function Home(){
                 <div class="video-card">
                 <iframe 
                     src="https://www.youtube.com/embed/NO02I3XXbTU" 
-                    title="Sax performance"
+                    title="Sax performance" 
                     frameborder="0"
                     allowfullscreen>
                 </iframe>

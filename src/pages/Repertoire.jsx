@@ -106,36 +106,22 @@ export default function Repertorio() {
   }
 
   return (
-    <section className="repertorio-container">
-
-      {repertorio.map((item, index) => (
-        <div key={index} className="repertorio-item">
-            <h2
-            onClick={() => toggle(index)}
-            className={`repertorio-title ${active === index ? "active" : ""}`}
-            >
-            {item.title}
+      <section className="repertorio-container">
+        {repertorio.map((item, index) => (
+          <div key={index} className="repertorio-item">
+            
+            <h2 className="repertorio-title">
+              {item.title}
             </h2>
 
-          <AnimatePresence>
-            {active === index && (
-              <motion.ul
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: "auto" }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.4 }}
-                className="repertorio-list"
-              >
-                {item.songs.map((song, i) => (
-                  <li key={i}>{song}</li>
-                ))}
-              </motion.ul>
-            )}
-          </AnimatePresence>
+            <ul className="repertorio-list">
+              {item.songs.map((song, i) => (
+                <li key={i}>{song}</li>
+              ))}
+            </ul>
 
-        </div>
-      ))}
-
-    </section>
+          </div>
+        ))}
+      </section>
   )
 }
