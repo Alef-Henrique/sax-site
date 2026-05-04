@@ -1,9 +1,21 @@
+import { useRef } from "react"
 import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import "../styles/repertoire.css"
 
 export default function Repertorio() {
   const [active, setActive] = useState(null)
+
+  const carouselRef = useRef(null)
+
+  const scroll = (direction) => {
+    const { current } = carouselRef
+    const scrollAmount = 300
+
+    if (direction === "left") {
+      current.scrollBy({ left: -scrollAmount, behavior: "smooth" })
+    } else {
+      current.scrollBy({ left: scrollAmount, behavior: "smooth" })
+    }
+  }
 
   const repertorio = [
     {
@@ -105,23 +117,40 @@ export default function Repertorio() {
     setActive(active === index ? null : index)
   }
 
-  return (
-      <section className="repertorio-container">
-        {repertorio.map((item, index) => (
-          <div key={index} className="repertorio-item">
-            
-            <h2 className="repertorio-title">
-              {item.title}
-            </h2>
+return (
+    <section id="repertorio" className="repertorio-container">
 
-            <ul className="repertorio-list">
-              {item.songs.map((song, i) => (
-                <li key={i}>{song}</li>
-              ))}
-            </ul>
+      <h2 className="repertorio-heading">Repertório</h2>
 
-          </div>
-        ))}
-      </section>
-  )
+      <div className="carousel-wrapper">
+
+        {/* BOTÃO ESQUERDA */}
+        <button className="carousel-btn left" onClick={() => scroll("left")}>
+          ❮
+        </button>
+
+        {/* CARROSSEL */}
+        <div className="repertorio-carousel" ref={carouselRef}>
+          {repertorio.map((item, index) => (
+            <div key={index} className="repertorio-card">
+              <h3 className="repertorio-title">{item.title}</h3>
+
+              <ul className="repertorio-list">
+                {item.songs.map((song, i) => (
+                  <li key={i}>{song}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+
+        {/* BOTÃO DIREITA */}
+        <button className="carousel-btn right" onClick={() => scroll("right")}>
+          ❯
+        </button>
+
+      </div>
+
+    </section>
+)
 }

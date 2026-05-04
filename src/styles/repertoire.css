@@ -1,41 +1,71 @@
-/* FUNDO GERAL */
+/* FUNDO */
 body {
   background: black;
 }
 
-/* CONTAINER GRID */
-.repertorio-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* já diminui aqui também */
-  gap: 25px;
-  padding: 40px;
-  margin-top: 80px; /* 👈 distância do header */
+/* SCROLL SUAVE + CORREÇÃO HEADER */
+html {
+  scroll-behavior: smooth;
 }
 
-/* CARD */
-.repertorio-item {
-  background: black;
-  padding: 12px; /* 👈 menor */
-  border-radius: 18px;
-  border: 1px solid #d4af37;
-  box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-/* HOVER (efeito luxo) */
-.repertorio-item:hover {
-  transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+#repertorio {
+  scroll-margin-top: 100px;
+  padding: 60px 0;
 }
 
 /* TÍTULO */
-.repertorio-title {
-  font-size: 26px;
-  font-weight: bold;
+.repertorio-heading {
   color: #d4af37;
-  margin-bottom: 15px;
-  letter-spacing: 1px;
+  font-size: 28px;
+  margin-bottom: 20px;
+  padding-left: 40px;
+}
+
+/* WRAPPER (necessário pros botões) */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+/* CARROSSEL */
+.repertorio-carousel {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 20px 60px; /* espaço pros botões */
+  scroll-behavior: smooth;
+}
+
+/* ESCONDER SCROLL */
+.repertorio-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+/* CARD */
+.repertorio-card {
+  min-width: 260px;
+  background: linear-gradient(145deg, #000, #111);
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  border-radius: 16px;
+  padding: 15px;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+/* HOVER (estilo Netflix) */
+.repertorio-card:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+  z-index: 10;
+}
+
+/* TÍTULO DO CARD */
+.repertorio-title {
+  color: #d4af37;
+  font-size: 18px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 /* LISTA */
@@ -45,9 +75,58 @@ body {
   margin: 0;
 }
 
-/* ITENS */
 .repertorio-list li {
-  color: #e5e5e5;
-  font-size: 14px;
-  margin-bottom: 8px;
+  color: #ccc;
+  font-size: 13px;
+  margin-bottom: 6px;
+  text-align: center;
+}
+
+.carousel-btn {
+  position: absolute;
+  z-index: 20;
+
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* 👈 deixa redondo */
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(212, 175, 55, 0.5);
+  color: #d4af37;
+
+  font-size: 22px;
+  cursor: pointer;
+
+  transition: all 0.3s ease;
+  backdrop-filter: blur(6px);
+}
+
+/* POSIÇÃO CENTRALIZADA */
+.carousel-btn.left {
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.carousel-btn.right {
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* HOVER PREMIUM */
+.carousel-btn:hover {
+  background: #d4af37;
+  color: black;
+  transform: translateY(-50%) scale(1.1);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+}
+
+/* CLIQUE */
+.carousel-btn:active {
+  transform: translateY(-50%) scale(0.95);
 }

@@ -210,10 +210,10 @@ export default function Home(){
         {/* REPERTÓRIO */}
 
         <Reveal>
-            <section className="container">
+            <section id="repertorio" className="container">
 
             <h2 className="section-title">
-            Repertório
+                <a href="#repertorio">Repertório</a>
             </h2>
 
             <div className="repertorio-grid">
