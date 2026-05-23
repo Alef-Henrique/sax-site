@@ -4,8 +4,49 @@
  */
 
 import { motion, useScroll, useTransform, useMotionValue, animate, useInView } from 'motion/react';
-import { Music, Calendar, Award, Star, Instagram, Mail, Phone, ArrowRight, Menu, X, ChevronRight, Play, ChevronLeft, MessageCircle, Youtube, MapPin, ExternalLink } from 'lucide-react';
-import { useState, useRef, useEffect } from 'react';
+import { Music, Calendar, Award, Star, Instagram, Mail, Phone, ArrowRight, Menu, X, ChevronRight, Play, ChevronLeft, Youtube, MapPin, ExternalLink } from 'lucide-react';
+import { useState, useRef, useEffect, forwardRef, type MouseEventHandler } from 'react';
+import { AnimatePresence } from 'framer-motion';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale } from "react-datepicker";
+import { ptBR } from "date-fns/locale";
+
+registerLocale("pt-BR", ptBR);
+
+const DatePickerButton = forwardRef<HTMLButtonElement, { value?: string; onClick?: MouseEventHandler<HTMLButtonElement> }>(
+  ({ value, onClick }, ref) => (
+    <button
+      ref={ref}
+      type="button"
+      onClick={onClick}
+      aria-label="Selecionar a data do evento"
+      className="
+        w-full
+        px-6
+        py-5
+        rounded-[24px]
+        border
+        border-white/10
+        bg-gradient-to-br
+        from-white/[0.08]
+        to-white/[0.03]
+        backdrop-blur-2xl
+        text-left
+        text-white
+        transition-all
+        duration-300
+        shadow-[0_10px_35px_rgba(0,0,0,0.35)]
+        hover:border-brand-gold/40
+        focus:outline-none
+        focus:ring-2
+        focus:ring-brand-gold/20
+      "
+    >
+      {value || "Selecione a data"}
+    </button>
+  )
+);
 
 const WhatsAppIcon = ({ className }: { className?: string }) => (
   <svg 
@@ -48,37 +89,38 @@ const SERVICES = [
     title: "Casamentos",
     description: "Trilha sonora personalizada desde a entrada triunfal até a recepção festiva. Transformamos cada momento do seu grande dia em uma memória emocionante e eterna através de performances com alma e técnica refinada.",
     icon: <Star className="w-6 h-6" />,
-    image: "/images/regenerated_image_1778771880531.jpg"
+    image: "assets/imagens/photo-casamento.webp"
   },
   {
     title: "Eventos Corporativos",
     description: "Leve sofisticação para coquetéis, jantares e lançamentos. O toque musical exclusivo que valoriza sua marca e proporciona conforto aos seus convidados, garantindo profissionalismo e uma experiência premium.",
     icon: <Award className="w-6 h-6" />,
-    image: "/images/regenerated_image_1778771881224.webp"
+    image: "assets/imagens/photo-corporate.webp"
   },
+
   {
     title: "Restaurantes",
     description: "Música ambiente de alto nível para criar a atmosfera perfeita em jantares e coquetéis. Saxofone elegante que se integra suavemente à experiência gastronômica, elevando o padrão e o conforto do seu local.",
     icon: <Music className="w-6 h-6" />,
-    image: "/images/regenerated_image_1778771962635.jpg"
+    image: "assets/imagens/restaurante-photo.webp"
   },
   {
     title: "Festas",
     description: "Aumente a vibração da sua comemoração com um show dinâmico e contagiante. Hits atuais e clássicos garantem que todos aproveitem cada segundo na pista de dança com a energia única do saxofone.",
     icon: <Play className="w-6 h-6" />,
-    image: "/images/regenerated_image_1778772377433.jpg"
+    image: "assets/imagens/festas-photo.webp"
   },
   {
     title: "Aniversários",
     description: "Celebre a vida com uma apresentação íntima e envolvente. Do som ambiente no jantar às batidas animadas da festa, criamos a trilha sonora ideal que reflete sua personalidade em uma comemoração marcante.",
     icon: <Calendar className="w-6 h-6" />,
-    image: "/images/regenerated_image_1778772378710.jpg"
+    image: "assets/imagens/photo-niver.webp"
   },
   {
     title: "Shows e Eventos",
     description: "Performances memoráveis para festivais, inaugurações e grandes palcos. Saxofone virtuoso com arranjos criativos que cativam o público do início ao fim, elevando o nível artístico de qualquer programação.",
     icon: <Music className="w-6 h-6" />,
-    image: "/images/regenerated_image_1778772380046.jpg"
+    image: "assets/imagens/shows-photo.webp"
   }
 ];
 
@@ -165,8 +207,29 @@ const TESTIMONIALS = [
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [repertoireIndex, setRepertoireIndex] = useState(0);
-  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const targetRef = useRef(null);
+  const [isEventOpen, setIsEventOpen] = useState(false);
+  const [selectedEvent, setSelectedEvent] = useState('');
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+  const [isDurationOpen, setIsDurationOpen] = useState(false);
+  const [selectedDuration, setSelectedDuration] = useState('');
+  const [eventLocation, setEventLocation] = useState('');
+  const [clientName, setClientName] = useState('');
+  const [viewportWidth, setViewportWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 0);
+
+  const isMobile = viewportWidth <= 768;
+  const carouselMaxWidth = viewportWidth >= 1024
+    ? `${(REPERTOIRE.length * 100) / 3}%`
+    : viewportWidth >= 768
+      ? `${(REPERTOIRE.length * 100) / 2}%`
+      : `${REPERTOIRE.length * 100}%`;
+
+  useEffect(() => {
+    const updateViewportWidth = () => setViewportWidth(window.innerWidth);
+    updateViewportWidth();
+    window.addEventListener('resize', updateViewportWidth);
+    return () => window.removeEventListener('resize', updateViewportWidth);
+  }, []);
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -184,6 +247,29 @@ export default function App() {
   const opacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
+  const handleWhatsAppQuote = () => {
+  const numero = "5522988354135"; // seu número
+
+  const mensagem = [
+    "*Olá, gostaria de fazer uma Solicitação de Orçamento por favor!*","",
+    `Nome: ${clientName || "Não informado"}`,
+    `Tipo do Evento: ${selectedEvent || "Não informado"}`,
+    `Data do Evento: ${
+      selectedDate
+        ? selectedDate.toLocaleDateString("pt-BR")
+        : "Não informada"
+    }`,
+    `Duração do Evento: ${selectedDuration || "Não informada"}`,
+    `Local do Evento: ${eventLocation || "Não informado"}`
+  ].join("\n");
+
+  const url = `https://wa.me/${numero}?text=${encodeURIComponent(
+    mensagem
+  )}`;
+
+  window.open(url, "_blank");
+};
+
   return (
     <div className="relative min-h-screen bg-transparent overflow-x-hidden">
       {/* Global Background Video */}
@@ -194,6 +280,7 @@ export default function App() {
           loop
           muted
           playsInline
+          aria-hidden="true"
           className="w-full h-full object-cover pointer-events-none"
         >
           <source src="https://assets.mixkit.co/videos/preview/mixkit-wedding-reception-decoration-in-a-garden-at-night-42525-large.mp4" type="video/mp4" />
@@ -210,7 +297,7 @@ export default function App() {
             scale: 1.02,
             textShadow: "0 0 12px rgba(214, 175, 55, 0.6)"
           }}
-          className="text-[16px] leading-[25px] font-serif font-bold tracking-tight text-brand-gold cursor-pointer transition-all transition-shadow duration-300"
+          className="text-[16px] leading-[25px] font-serif font-bold tracking-tight text-brand-gold cursor-pointer transition-all duration-300"
         >
           Álefe Silva | Saxofonista
         </motion.a>
@@ -514,7 +601,7 @@ export default function App() {
           >
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-brand-gold/10 rounded-full blur-3xl" />
             <img 
-              src="/images/IMG_20251225_131200_830.webp" 
+              src="assets/imagens/perfil.webp" 
               alt="Álefe Silva tocando"
               className="rounded-2xl relative z-10 border border-white/10"
             />
@@ -578,13 +665,13 @@ export default function App() {
             {/* Desktop Navigation Buttons */}
             <button 
               onClick={() => setRepertoireIndex(prev => prev > 0 ? prev - 1 : REPERTOIRE.length - 1)}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 lg:-translate-x-16 z-20 w-12 h-12 bg-white/5 hover:bg-brand-gold text-white hover:text-black rounded-full flex items-center justify-center border border-white/10 hover:border-brand-gold transition-all duration-300 backdrop-blur-md opacity-0 group-hover:opacity-100 hidden md:flex"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-6 lg:-translate-x-16 z-20 w-12 h-12 bg-white/5 hover:bg-brand-gold text-white hover:text-black rounded-full items-center justify-center border border-white/10 hover:border-brand-gold transition-all duration-300 backdrop-blur-md opacity-0 hidden md:flex"
             >
               <ChevronLeft className="w-6 h-6" />
             </button>
             <button 
               onClick={() => setRepertoireIndex(prev => (prev + 1) % REPERTOIRE.length)}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 lg:translate-x-16 z-20 w-12 h-12 bg-white/5 hover:bg-brand-gold text-white hover:text-black rounded-full flex items-center justify-center border border-white/10 hover:border-brand-gold transition-all duration-300 backdrop-blur-md opacity-0 group-hover:opacity-100 hidden md:flex"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-6 lg:translate-x-16 z-20 w-12 h-12 bg-white/5 hover:bg-brand-gold text-white hover:text-black rounded-full items-center justify-center border border-white/10 hover:border-brand-gold transition-all duration-300 backdrop-blur-md opacity-0 hidden md:flex"
             >
               <ChevronRight className="w-6 h-6" />
             </button>
@@ -610,7 +697,7 @@ export default function App() {
                 animate={{ x: `-${repertoireIndex * (100 / (REPERTOIRE.length))}%` }}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
                 className="flex"
-                style={{ width: `${REPERTOIRE.length * (100 / 1)}%`, maxWidth: window.innerWidth >= 1024 ? `${(REPERTOIRE.length * 100) / 3}%` : window.innerWidth >= 768 ? `${(REPERTOIRE.length * 100) / 2}%` : `${REPERTOIRE.length * 100}%` }}
+                style={{ width: `${REPERTOIRE.length * 100}%`, maxWidth: carouselMaxWidth }}
               >
                 {REPERTOIRE.map((category, idx) => (
                   <div 
@@ -757,50 +844,328 @@ export default function App() {
               </div>
             </div>
 
-            <motion.div 
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-xl"
-            >
-              <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                <div>
-                  <label className="block text-xs uppercase tracking-[0.2em] font-bold text-white/40 mb-2">Nome Completo</label>
-                  <input 
-                    type="text" 
-                    placeholder="Como podemos te chamar?"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-brand-gold/50 outline-none transition-all placeholder:text-white/20"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-[0.2em] font-bold text-white/40 mb-2">Seu E-mail</label>
-                  <input 
-                    type="email" 
-                    placeholder="email@exemplo.com"
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-brand-gold/50 outline-none transition-all placeholder:text-white/20"
-                  />
-                </div>
-                <div>
-                  <label className="block text-xs uppercase tracking-[0.2em] font-bold text-white/40 mb-2">Sua Mensagem</label>
-                  <textarea 
-                    rows={4}
-                    placeholder="Conte-nos um pouco sobre o seu evento..."
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-6 py-4 focus:border-brand-gold/50 outline-none transition-all placeholder:text-white/20 resize-none"
-                  />
-                </div>
-                <motion.button 
-                  whileHover={{ 
-                    scale: 1.02,
-                    backgroundColor: "#ffffff",
-                    boxShadow: "0 0 30px rgba(214, 175, 55, 0.3)"
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                  className="w-full py-5 bg-brand-gold text-black rounded-xl font-bold uppercase tracking-widest transition-all shadow-lg shadow-brand-gold/20"
+            <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="bg-white/5 p-10 rounded-3xl border border-white/10 backdrop-blur-xl"
+          >
+            <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
+              <div>
+            <label htmlFor="clientName" className="block text-xs uppercase tracking-[0.2em] font-bold text-white/40 mb-3">
+              Nome Completo
+            </label>
+
+            <div className="relative">
+              <input
+                id="clientName"
+                name="clientName"
+                type="text"
+                value={clientName}
+                onChange={(e) => setClientName(e.target.value)}
+                placeholder="Digite seu nome"
+                className="
+                  w-full
+                  px-6
+                  py-5
+                  rounded-[24px]
+                  border
+                  border-white/10
+                  bg-gradient-to-br
+                  from-white/[0.08]
+                  to-white/[0.03]
+                  backdrop-blur-2xl
+                  text-white
+                  placeholder:text-white/30
+                  outline-none
+                  transition-all
+                  duration-300
+                  shadow-[0_10px_35px_rgba(0,0,0,0.35)]
+                  hover:border-brand-gold/40
+                  focus:border-brand-gold
+                  focus:ring-2
+                  focus:ring-brand-gold/20
+                "
+              />
+            </div>
+          </div>
+
+          {/* Tipo de Evento */}
+          <div>
+            <label className="block text-xs uppercase tracking-[0.2em] font-bold text-white/40 mb-3">
+              Tipo de Evento
+            </label>
+
+            <div className="relative">
+              <motion.button
+                type="button"
+                onClick={() => setIsEventOpen(!isEventOpen)}
+                whileTap={{ scale: 0.99 }}
+                whileHover={{ scale: 1.01 }}
+                className="w-full px-6 py-5 rounded-[24px] border border-white/10 bg-gradient-to-br from-white/[0.08] to-white/[0.03] backdrop-blur-2xl flex items-center justify-between transition-all duration-300 shadow-[0_10px_35px_rgba(0,0,0,0.35)] hover:border-brand-gold/40 hover:shadow-[0_0_25px_rgba(214,175,55,0.15)] focus:outline-none focus:ring-2 focus:ring-brand-gold/20"
+              >
+                <span className="text-white font-medium tracking-wide">
+                  {selectedEvent || "Selecione o evento"}
+                </span>
+
+                <motion.div
+                  animate={{ rotate: isEventOpen ? 180 : 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-brand-gold text-sm"
                 >
-                  Enviar Solicitação
-                </motion.button>
-              </form>
-            </motion.div>
+                  ▼
+                </motion.div>
+              </motion.button>
+
+              <AnimatePresence>
+                {isEventOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.96 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.96 }}
+                    transition={{ duration: 0.25 }}
+                    className="absolute top-full left-0 mt-3 w-full z-50 overflow-hidden rounded-[24px] border border-white/10 bg-[#0b0b0b]/95 backdrop-blur-2xl shadow-[0_20px_60px_rgba(0,0,0,0.55)]"
+                  >
+                <div className="max-h-[220px] overflow-y-auto custom-scroll">
+                  {[
+                    "Casamento",
+                    "Show",
+                    "Festa",
+                    "Gospel",
+                    "Restaurante",
+                    "Aniversário",
+                    "Evento Corporativo",
+                    "Coquetel",
+                    "Formatura",
+                    "Jantar Especial",
+                    "Pedido de Casamento",
+                    "Recepção"
+                  ].map((event) => (
+                    <button
+                      key={event}
+                      type="button"
+                      onClick={() => {
+                        setSelectedEvent(event);
+                        setIsEventOpen(false);
+                      }}
+                      className="
+                        w-full
+                        px-6
+                        py-4
+                        text-left
+                        text-white/80
+                        font-medium
+                        transition-all
+                        duration-300
+                        hover:bg-brand-gold/10
+                        hover:text-white
+                        border-b
+                        border-white/5
+                        last:border-none
+                      "
+                    >
+                      {event}
+                    </button>
+                  ))}
+                </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+
+              {/* Data do Evento */}
+{/* Data do Evento */}
+<div>
+  <label className="block text-xs uppercase tracking-[0.2em] font-bold text-white/40 mb-3">
+    Data do Evento
+  </label>
+
+  <div className="relative">
+      <DatePicker
+        selected={selectedDate}
+        onChange={(date: Date | null) => setSelectedDate(date)}
+        locale="pt-BR"
+        dateFormat="dd/MM/yyyy"
+        popperPlacement="bottom-end"
+        shouldCloseOnSelect
+        withPortal={isMobile}
+        calendarClassName="premium-calendar"
+        customInput={<DatePickerButton />}
+      />
+
+    <Calendar className="absolute right-6 top-1/2 -translate-y-1/2 w-5 h-5 text-brand-gold pointer-events-none" />
+  </div>
+</div>
+              {/* Duração do Evento */}
+<div>
+  <label className="block text-xs uppercase tracking-[0.2em] font-bold text-white/40 mb-3">
+    Duração do Evento
+  </label>
+
+  <div className="relative">
+    <motion.button
+      type="button"
+      onClick={() => setIsDurationOpen(!isDurationOpen)}
+      whileTap={{ scale: 0.99 }}
+      whileHover={{ scale: 1.01 }}
+      className="
+        w-full
+        px-6
+        py-5
+        rounded-[24px]
+        border
+        border-white/10
+        bg-gradient-to-br
+        from-white/[0.08]
+        to-white/[0.03]
+        backdrop-blur-2xl
+        flex
+        items-center
+        justify-between
+        transition-all
+        duration-300
+        shadow-[0_10px_35px_rgba(0,0,0,0.35)]
+        hover:border-brand-gold/40
+        hover:shadow-[0_0_25px_rgba(214,175,55,0.15)]
+        focus:outline-none
+        focus:ring-2
+        focus:ring-brand-gold/20
+      "
+    >
+      <span className="text-white font-medium tracking-wide">
+        {selectedDuration || "Selecione a duração"}
+      </span>
+
+      <motion.div
+        animate={{ rotate: isDurationOpen ? 180 : 0 }}
+        transition={{ duration: 0.3 }}
+        className="text-brand-gold text-sm"
+      >
+        ▼
+      </motion.div>
+    </motion.button>
+
+    <AnimatePresence>
+      {isDurationOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -10, scale: 0.96 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          exit={{ opacity: 0, y: -10, scale: 0.96 }}
+          transition={{ duration: 0.25 }}
+          className="
+            absolute
+            top-full
+            left-0
+            mt-3
+            w-full
+            z-50
+            rounded-[24px]
+            border
+            border-white/10
+            bg-[#0b0b0b]/95
+            backdrop-blur-2xl
+            shadow-[0_20px_60px_rgba(0,0,0,0.55)]
+            overflow-hidden
+          "
+        >
+        <div className="max-h-[220px] overflow-y-auto custom-scroll">
+          {[
+            "30 minutos",
+            "1 hora",
+            "2 horas",
+            "3 horas",
+            "4 horas",
+            "5 horas",
+            "6 horas",
+            "Mais de 6 horas"
+          ].map((duration) => (
+            <button
+              key={duration}
+              type="button"
+              onClick={() => {
+                setSelectedDuration(duration);
+                setIsDurationOpen(false);
+              }}
+              className="
+                w-full
+                px-6
+                py-4
+                text-left
+                text-white/80
+                font-medium
+                transition-all
+                duration-300
+                hover:bg-brand-gold/10
+                hover:text-white
+                border-b
+                border-white/5
+                last:border-none
+              "
+            >
+              {duration}
+            </button>
+          ))}
+        </div>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  </div>
+</div>
+
+{/* Local do Evento */}
+<div>
+  <label className="block text-xs uppercase tracking-[0.2em] font-bold text-white/40 mb-3">
+    Local do Evento
+  </label>
+
+  <div className="relative">
+    <input
+      type="text"
+      value={eventLocation}
+      onChange={(e) => setEventLocation(e.target.value)}
+      placeholder="Cidade / Local do evento"
+      className="
+        w-full
+        px-6
+        py-5
+        rounded-[24px]
+        border
+        border-white/10
+        bg-gradient-to-br
+        from-white/[0.08]
+        to-white/[0.03]
+        backdrop-blur-2xl
+        text-white
+        placeholder:text-white/30
+        outline-none
+        transition-all
+        duration-300
+        shadow-[0_10px_35px_rgba(0,0,0,0.35)]
+        hover:border-brand-gold/40
+        focus:border-brand-gold
+        focus:ring-2
+        focus:ring-brand-gold/20
+      "
+    />
+  </div>
+</div>
+
+            <motion.button
+              type="button"
+              onClick={handleWhatsAppQuote}
+              whileHover={{
+                scale: 1.02,
+                boxShadow: "0 0 30px rgba(214,175,55,0.3)"
+              }}
+              whileTap={{ scale: 0.98 }}
+              className="w-full py-5 bg-brand-gold text-black rounded-xl font-bold text-sm uppercase tracking-widest transition-all shadow-lg shadow-brand-gold/20"
+            >
+              Solicitar Orçamento
+            </motion.button>
+
+            </form>
+          </motion.div>
           </div>
         </div>
       </section>
@@ -810,6 +1175,7 @@ export default function App() {
         href="https://wa.me/5522988354135?text=Ol%C3%A1%20%C3%81lefe%2C%20gostaria%20de%20fazer%20um%20or%C3%A7amento%20por%20favor!"
         target="_blank"
         rel="noopener noreferrer"
+        aria-label="Abrir WhatsApp"
         initial={{ scale: 0 }}
         animate={{ scale: 1 }}
         whileHover={{ scale: 1.1 }}
@@ -817,6 +1183,7 @@ export default function App() {
       >
         <WhatsAppIcon className="w-9 h-9" />
       </motion.a>
+
 
       {/* Footer */}
       <footer className="bg-black pt-24 pb-12 px-6 border-t border-brand-gold/10 relative overflow-hidden">
@@ -974,7 +1341,7 @@ export default function App() {
               </p>
               <span className="w-8 h-[1px] bg-brand-gold/30 hidden md:block" />
             </div>
-            <div className="flex items-center gap-4 text-white/20 hover:text-brand-gold/40 transition-colors cursor-pointer group">
+            <div className="flex items-center gap-4 text-white/20 transition-colors group">
               <span className="text-[10px] tracking-widest uppercase font-medium">Elevate Your Concept</span>
               <ExternalLink className="w-3 h-3 opacity-50 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
             </div>

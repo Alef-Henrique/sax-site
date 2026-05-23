@@ -1,7 +1,6 @@
 @import "tailwindcss";
 
 @layer base {
-  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600&display=swap');
 }
 
 @theme {
@@ -19,4 +18,281 @@ body {
 
 h1, h2, h3, h4 {
   @apply font-serif;
+}
+
+.line-clamp-5 {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Caixa principal */
+.react-datepicker {
+  width: 300px !important;
+  max-width: calc(100vw - 32px) !important;
+
+  background: rgba(8, 8, 8, 0.98) !important;
+  border: 1px solid rgba(214, 175, 55, 0.18) !important;
+  border-radius: 24px !important;
+
+  overflow: hidden;
+  backdrop-filter: blur(35px);
+
+  box-shadow:
+    0 15px 45px rgba(0, 0, 0, 0.65),
+    0 0 25px rgba(214, 175, 55, 0.08);
+
+  padding: 10px !important;
+  font-family: inherit;
+}
+
+/* Remove seta branca */
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle {
+  display: none !important;
+}
+
+/* =========================
+   DESKTOP POPUP
+========================= */
+
+.react-datepicker-popper {
+  z-index: 9999 !important;
+  transform: translateY(10px) !important;
+}
+
+/* Wrapper */
+.react-datepicker-wrapper {
+  width: 100%;
+}
+
+/* =========================
+   MOBILE PORTAL
+========================= */
+
+/* Desktop não altera nada */
+.react-datepicker__portal {
+  z-index: 99999 !important;
+}
+
+/* Mobile centralizado */
+@media (max-width: 768px) {
+
+  /* Portal sem espaço sobrando */
+  .react-datepicker__portal {
+    position: fixed !important;
+    inset: 0 !important;
+
+    display: grid !important;
+    place-items: center !important;
+
+    background: rgba(0, 0, 0, 0.72);
+    backdrop-filter: blur(12px);
+
+    overflow: hidden !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    z-index: 99999 !important;
+  }
+
+  /* Calendário */
+  .react-datepicker__portal .react-datepicker {
+    position: static !important;
+
+    width: 260px !important;
+    max-width: 260px !important;
+
+    margin: 0 !important;
+    transform: none !important;
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.react-datepicker__header {
+  background: transparent !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
+  padding: 14px 0 !important;
+}
+
+/* Nome do mês */
+.react-datepicker__current-month {
+  color: #D6AF37 !important;
+  font-size: 0.95rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* Dias da semana */
+.react-datepicker__day-name {
+  color: rgba(255,255,255,.35) !important;
+  font-size: 11px !important;
+  font-weight: 600 !important;
+
+  width: 32px !important;
+  margin: 0.2rem !important;
+}
+
+/* Dias */
+.react-datepicker__day {
+  width: 32px !important;
+  height: 32px !important;
+  line-height: 32px !important;
+
+  border-radius: 999px !important;
+
+  color: rgba(255,255,255,.75) !important;
+  font-size: 13px !important;
+  font-weight: 500;
+
+  margin: 0.2rem !important;
+  transition: all .25s ease;
+}
+
+/* Hover premium */
+.react-datepicker__day:hover {
+  background: rgba(214,175,55,.14) !important;
+  color: #D6AF37 !important;
+  transform: scale(1.08);
+}
+
+/* Dia selecionado */
+.react-datepicker__day--selected {
+  background: linear-gradient(
+    135deg,
+    #D6AF37,
+    #f0d06c
+  ) !important;
+
+  color: black !important;
+  font-weight: 700 !important;
+
+  box-shadow:
+    0 0 18px rgba(214,175,55,.3);
+}
+
+/* Hoje */
+.react-datepicker__day--today {
+  border: 1px solid rgba(214,175,55,.45);
+  color: #D6AF37 !important;
+}
+
+/* Dias fora do mês */
+.react-datepicker__day--outside-month {
+  color: rgba(255,255,255,.15) !important;
+}
+
+/* Navegação */
+.react-datepicker__navigation {
+  top: 14px !important;
+}
+
+/* Setas */
+.react-datepicker__navigation-icon::before {
+  border-color: rgba(214,175,55,.7) !important;
+  border-width: 2px 2px 0 0 !important;
+}
+
+/* Hover nas setas */
+.react-datepicker__navigation:hover * {
+  border-color: #D6AF37 !important;
+}
+
+/* Glow interno */
+.react-datepicker__month-container {
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(214,175,55,.05),
+      transparent 35%
+    );
+}
+
+/* =========================
+   SCROLL PREMIUM
+========================= */
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.03);
+  border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background: rgba(214,175,55,0.4);
+  border-radius: 999px;
+}
+
+.custom-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(214,175,55,0.7);
+}
+@media (max-width: 768px) {
+
+  /* Overlay */
+  .react-datepicker__portal {
+    position: fixed !important;
+    inset: 0 !important;
+
+    z-index: 99999 !important;
+
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+
+    padding: 16px !important;
+
+    background: rgba(0, 0, 0, 0.78);
+    backdrop-filter: blur(12px);
+
+    overflow: hidden !important;
+  }
+
+  /* Calendário centralizado */
+  .react-datepicker__portal .react-datepicker {
+    position: relative !important;
+
+    width: 280px !important;
+    max-width: 280px !important;
+
+    margin: 0 auto !important;
+
+    transform: none !important;
+    inset: auto !important;
+    top: auto !important;
+    left: auto !important;
+  }
+
+  /* Ajusta grid dos dias */
+  .react-datepicker__month-container {
+    width: 100% !important;
+  }
+
+  /* Linha dos dias */
+  .react-datepicker__week {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* Cabeçalho dos dias */
+  .react-datepicker__day-names {
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  /* Dia */
+  .react-datepicker__day,
+  .react-datepicker__day-name {
+    width: 30px !important;
+    height: 30px !important;
+    line-height: 30px !important;
+    text-align: center !important;
+    margin: 0.15rem !important;
+  }
 }
