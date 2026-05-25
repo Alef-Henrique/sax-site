@@ -91,38 +91,38 @@ const SERVICES = [
     title: "Casamentos",
     description: "Trilha sonora personalizada desde a entrada triunfal até a recepção festiva. Transformamos cada momento do seu grande dia em uma memória emocionante e eterna através de performances com alma e técnica refinada.",
     icon: <Star className="w-6 h-6" />,
-    image: "public/assets/photo-casamento.webp"
+    image: "/assets/photo-casamento.webp"
   },
   {
     title: "Eventos Corporativos",
     description: "Leve sofisticação para coquetéis, jantares e lançamentos. O toque musical exclusivo que valoriza sua marca e proporciona conforto aos seus convidados, garantindo profissionalismo e uma experiência premium.",
     icon: <Award className="w-6 h-6" />,
-    image: "public/assets/photo-corporate.webp"
+    image: "/assets/photo-corporate.webp"
   },
 
   {
     title: "Restaurantes",
     description: "Música ambiente de alto nível para criar a atmosfera perfeita em jantares e coquetéis. Saxofone elegante que se integra suavemente à experiência gastronômica, elevando o padrão e o conforto do seu local.",
     icon: <Music className="w-6 h-6" />,
-    image: "public/assets/restaurante-photo.webp"
+    image: "/assets/restaurante-photo.webp"
   },
   {
     title: "Festas",
     description: "Aumente a vibração da sua comemoração com um show dinâmico e contagiante. Hits atuais e clássicos garantem que todos aproveitem cada segundo na pista de dança com a energia única do saxofone.",
     icon: <Play className="w-6 h-6" />,
-    image: "public/assets/festas-photo.webp",
+    image: "/assets/festas-photo.webp",
   },
   {
     title: "Aniversários",
     description: "Celebre a vida com uma apresentação íntima e envolvente. Do som ambiente no jantar às batidas animadas da festa, criamos a trilha sonora ideal que reflete sua personalidade em uma comemoração marcante.",
     icon: <Calendar className="w-6 h-6" />,
-    image: "public/assets/photo-niver.webp"
+    image: "/assets/photo-niver.webp"
   },
   {
     title: "Shows e Eventos",
     description: "Performances memoráveis para festivais, inaugurações e grandes palcos. Saxofone virtuoso com arranjos criativos que cativam o público do início ao fim, elevando o nível artístico de qualquer programação.",
     icon: <Music className="w-6 h-6" />,
-    image: "public/assets/shows-photo.webp"
+    image: "/assets/shows-photo.webp"
   }
 ];
 
@@ -603,7 +603,7 @@ export default function App() {
           >
             <div className="absolute -top-10 -left-10 w-40 h-40 bg-brand-gold/10 rounded-full blur-3xl" />
             <img 
-              src="public/assets/perfil.webp" 
+              src="/assets/perfil.webp" 
               alt="Álefe Silva tocando"
               className="rounded-2xl relative z-10 border border-white/10"
             />
