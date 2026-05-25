@@ -12,6 +12,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import { registerLocale } from "react-datepicker";
 import { ptBR } from "date-fns/locale";
 
+
+
 registerLocale("pt-BR", ptBR);
 
 const DatePickerButton = forwardRef<HTMLButtonElement, { value?: string; onClick?: MouseEventHandler<HTMLButtonElement> }>(
@@ -108,7 +110,7 @@ const SERVICES = [
     title: "Festas",
     description: "Aumente a vibração da sua comemoração com um show dinâmico e contagiante. Hits atuais e clássicos garantem que todos aproveitem cada segundo na pista de dança com a energia única do saxofone.",
     icon: <Play className="w-6 h-6" />,
-    image: "assets/festas-photo.webp"
+    image: "assets/festas-photo.webp",
   },
   {
     title: "Aniversários",
