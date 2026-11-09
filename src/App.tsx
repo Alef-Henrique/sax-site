@@ -127,16 +127,16 @@ const SERVICES = [
 ];
 
 const YOUTUBE_VIDEOS = [
-  "mEkHMSNPvIM",
+  "AYlvcrYHY6c",
   "XcbO9tJBZSk",
   "BaWzWqKXBrM",
   "zlHAj3qXsr0",
   "rDMVwgI3Foc",
-  "NO02I3XXbTU"
+  "OETbTjifjE0"
 ];
 
 const REPERTOIRE = [
-  { genre: "MPB", items: ["Chega de Saudade", "Mas que Nada", "Aquarela do Brasil", "Samba de Verão"] },
+  { genre: "MPB", items: ["Ouvi Dizer (Melim)", "Sorri, sou Rei (Natiruts)", "Hoje ninguém vai estragar meu dia (Charlie Brown)", "Samba de Verão"] },
   { genre: "Lounge & Bossa", items: ["Garota de Ipanema", "Wave", "Corcovado", "Summer Vibe"] },
   { genre: "Internacionais", items: ["Careless Whisper", "Perfect", "Havana", "Blinding Lights"] },
   { genre: "Sax House", items: ["Man with the Red Face", "Jubel", "Changes", "Infinity"] },
